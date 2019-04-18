@@ -1,33 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import EventsIndex from './components/events_index';
 import { Provider } from 'react-redux';
-import { createStore } from "redux";
-
-
-const action = {
-    type: 'GREET',
-    payload: {
-        greet: 'Hello'
-    }
-}
-
-function reducer(state = {greet: ''}, action) {
-    switch(action.type) {
-        case 'GREET':
-            return action.payload.greet
-        default:
-            return state
-    }
-};
-
-const store = createStore(reducer);
-
-store.dispatch(action);
+import store from './store';
 
 ReactDOM.render(
     <Provider store={store}>
-        <App greet={store.getState()}/>
+        <EventsIndex />
     </Provider>,
     document.getElementById('root')
 );
